@@ -15,6 +15,7 @@ function App() {
   return (
     <>
     <Router>
+    <Routes>
       {/* Routes for initial user interaction */}
       <Route path='/Login' element={<Login/>}/>
       <Route path='/Register' element={<Register/>}/>
@@ -22,8 +23,10 @@ function App() {
       {/* Routes for MAIN MENU components */}
       <Route path='/Dashbaord' element={<Dashboard/>}/>
 
-      
+
+    </Routes>
     </Router>
+    
     </>
   );
 }
