@@ -1,1 +1,5 @@
-@import ('../../assets/styles/index.css');
+function Login(){
+
+};
+
+export default Login;
