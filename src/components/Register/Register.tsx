@@ -1,6 +1,7 @@
 /* Standard Dependencies & Imports */
 import { useNavigate } from 'react-router-dom';
 import './Register.css';
+import React from 'react';
 
 function Register() {
 
@@ -16,21 +17,21 @@ function Register() {
                         </h1>
                         <form className='space-y-4 ' action='#'>
                             <div>
-                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                                <input type="email" name="loginEmail" id="loginEmail" class="text-white sm:text-sm rounded-lg block w-full p-2.5 bg-gray-800  placeholder-gray-400 focus:ring-blue-900 focus:border-blue-500 focus:text-blue-100" placeholder="Enter your email" required="" />
+                                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                                <input type="email" name="loginEmail" id="loginEmail" className="text-white sm:text-sm rounded-lg block w-full p-2.5 bg-gray-800  placeholder-gray-400 focus:ring-blue-900 focus:border-blue-500 focus:text-blue-100" placeholder="Enter your email" required />
                             </div>
                             <div className='mt-8'>
-                                <label for="password" class="block mb-2 text-sm font-medium text-white">Password</label>
-                                <input type="password" name="loginPassword" id="loginPassword" placeholder="••••••••" class="text-white sm:text-sm rounded-lg block w-full p-2.5 bg-gray-800  placeholder-gray-400 focus:ring-blue-900 focus:border-blue-500 focus:text-blue-100 py-2.5 mb-5" required="" />
+                                <label htmlFor="password" className="block mb-2 text-sm font-medium text-white">Password</label>
+                                <input type="password" name="loginPassword" id="loginPassword" placeholder="••••••••" className="text-white sm:text-sm rounded-lg block w-full p-2.5 bg-gray-800  placeholder-gray-400 focus:ring-blue-900 focus:border-blue-500 focus:text-blue-100 py-2.5 mb-5" required />
                             </div>
                             <div className='mt-8'>
-                                <label for="password" class="block mb-2 text-sm font-medium text-white">Confirm Password</label>
-                                <input type="password" name="loginPassword" id="loginPassword" placeholder="••••••••" class="text-white sm:text-sm rounded-lg block w-full p-2.5 bg-gray-800  placeholder-gray-400 focus:ring-blue-900 focus:border-blue-500 focus:text-blue-100 py-2.5 mb-6" required="" />
+                                <label htmlFor="password" className="block mb-2 text-sm font-medium text-white">Confirm Password</label>
+                                <input type="password" name="loginPassword" id="loginPassword" placeholder="••••••••" className="text-white sm:text-sm rounded-lg block w-full p-2.5 bg-gray-800  placeholder-gray-400 focus:ring-blue-900 focus:border-blue-500 focus:text-blue-100 py-2.5 mb-6" required />
                             </div>
-                        
-                            <button type="submit" class="w-full text-white bg-gray-800 transition hover:bg-white hover:text-black focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Create an account</button>
-                            <p class="text-sm font-regular text-gray-200">
-                                Already have an account? <label class="font-medium text-primary-600 hover:underline text-white cursor-pointer" onClick={() => { NAVIGATE("/Login") }}>Sign in</label>
+
+                            <button type="submit" className="w-full text-white bg-gray-800 transition hover:bg-white hover:text-black focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Create an account</button>
+                            <p className="text-sm font-regular text-gray-200">
+                                Already have an account? <label className="font-medium text-primary-600 hover:underline text-white cursor-pointer" onClick={() => { NAVIGATE("/Login") }}>Sign in</label>
                             </p>
                         </form>
 
