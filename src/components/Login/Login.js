@@ -12,7 +12,7 @@ function Login() {
                 <div id='login-form'>
                     <div className='p-10 space-y-4 md:space-y-6 sm:p-8'>
                         <h1 className='text-xl font-bold leading-tight tracking-light text-gray-900 md:text-2xl text-white'>
-                            Sign in
+                            Sign in ~ LuminaireDashboard
                         </h1>
                         <form className='space-y-4 ' action='#'>
                             <div>
