@@ -36,7 +36,7 @@ function Login() {
                             </div>
                             <button type="submit" class="w-full text-white bg-gray-800 transition hover:bg-white hover:text-black focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
                             <p class="text-sm font-regular text-gray-200">
-                                Don’t have an account yet? <a href="#" class="font-medium text-primary-600 hover:underline text-white">Sign up</a>
+                                Don’t have an account yet? <label class="font-medium text-primary-600 hover:underline text-white cursor-pointer" onClick={()=>{NAVIGATE("/Register")}}>Sign up</label>
                             </p>
                         </form>
 
