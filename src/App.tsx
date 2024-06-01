@@ -11,6 +11,7 @@ import Register from './components/Register/Register.tsx';
 import Dashboard from './components/Dashboard/Dashboard.tsx';
 
 import React from 'react';
+import SingleDevicePage from './components/Device/SingleDevicePage.tsx';
 
 function App() {
     return (
@@ -18,12 +19,16 @@ function App() {
             <Router>
                 <Routes>
                     {/* Routes for initial user interaction */}
-                    <Route path='/Login' element={<Login />} />
-                    <Route path='/Register' element={<Register />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/register' element={<Register />} />
 
                     {/* Routes for MAIN MENU components */}
-                    <Route path='/Dashboard' element={<Dashboard />} />
+                    <Route path='/dashboard' element={<Dashboard />} />
 
+                    {/* Dynamic route for SingleDevicePage */}
+                    <Route path='/device/:deviceId' element={<SingleDevicePage />} />
+
+                    <Route path='/list/:type' element={<Dashboard />} />
                     {/* Index Routing */}
                     <Route index element={<Login />} />
                 </Routes>

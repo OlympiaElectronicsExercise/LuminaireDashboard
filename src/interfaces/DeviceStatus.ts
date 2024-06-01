@@ -1,4 +1,5 @@
 interface DeviceStatus {
+    Id: string;
     Address: string;
     Maintained: boolean;
     BatteryCharging: boolean;
