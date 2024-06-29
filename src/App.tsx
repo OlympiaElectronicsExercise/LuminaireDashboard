@@ -4,8 +4,8 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //Imports of components for initial user interaction
-import Login from './components/Login/Login.tsx';
-import Register from './components/Register/Register.tsx';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 
 //Imports for MAIN MENU Components
 import Dashboard from './components/Dashboard/Dashboard.tsx';
