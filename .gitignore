@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.vs/LuminaireDashboard/v17/.wsuo
+.vs/VSWorkspaceState.json
+.vs/LuminaireDashboard/v17/DocumentLayout.json

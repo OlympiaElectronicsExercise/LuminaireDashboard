@@ -21,7 +21,7 @@ function App() {
           <Route path='/Register' element={<Register />} />
 
           {/* Routes for MAIN MENU components */}
-          <Route path='/Dashbaord' element={<Dashboard />} />
+          <Route path='/Dashboard' element={<Dashboard />} />
 
           {/* Index Routing */}
           <Route index element={<Login />} />
