@@ -34,7 +34,7 @@ function Register() {
         }
 
         if (password1 !== password2) {
-            setEmailError("Please write the password twice")
+            setPasswordError("Please write the password twice")
             return
         }
 
