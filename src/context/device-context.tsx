@@ -1,46 +1,50 @@
-import React, { createContext, useState, ReactNode } from 'react';
-import DeviceStatus from '../interfaces/DeviceStatus';
-import { deviceIsFaulty, deviceIsOffline, deviceIsOnline } from '../logic/operational-status.ts';
-
+import React, { createContext, useState, ReactNode } from "react";
+import { LuminareModel } from "../interfaces/Luminaire.ts";
+import {
+    deviceIsFaulty,
+    deviceIsOffline,
+    deviceIsOnline,
+} from "../logic/operational-status.ts";
 
 type DeviceContextType = {
-  devicesStatus: DeviceStatus[];
-  setDevicesStatus: (devicesStatus: DeviceStatus[]) => void;
-  onlineDevices: DeviceStatus[];
-  faultyDevices: DeviceStatus[];
-  offlineDevices: DeviceStatus[];
+    luminaires: LuminareModel[];
+    setLuminaires: (devicesStatus: LuminareModel[]) => void;
+    onlineDevices: LuminareModel[];
+    faultyDevices: LuminareModel[];
+    offlineDevices: LuminareModel[];
 };
 // Create the context
-export const DeviceContext = createContext<DeviceContextType>(
-  {
-    devicesStatus: [],
-    setDevicesStatus: () => { },
+export const DeviceContext = createContext<DeviceContextType>({
+    luminaires: [],
+    setLuminaires: () => {},
     onlineDevices: [],
     faultyDevices: [],
     offlineDevices: [],
-  }
-);
+});
 
 // Create a provider component
-export const DeviceProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // Define the state for DeviceStatus[]
-  const [devicesStatus, setDevicesStatus] = useState<DeviceStatus[]>([]);
-  const onlineDevices = devicesStatus.filter((device) => deviceIsOnline(device));
-  const faultyDevices = devicesStatus.filter((device) => deviceIsFaulty(device));
-  const offlineDevices = devicesStatus.filter((device) => deviceIsOffline(device));
+export const DeviceProvider: React.FC<{ children: ReactNode }> = ({
+    children,
+}) => {
+    // Define the state for LuminareModel[]
+    const [luminaires, setLuminaires] = useState<LuminareModel[]>([]);
+    const onlineDevices = luminaires.filter((device) => deviceIsOnline(device));
+    const faultyDevices = luminaires.filter((device) => deviceIsFaulty(device));
+    const offlineDevices = luminaires.filter((device) =>
+        deviceIsOffline(device)
+    );
 
-  return (
-    <DeviceContext.Provider value={
-      {
-        devicesStatus,
-        setDevicesStatus,
-        onlineDevices,
-        faultyDevices,
-        offlineDevices
-      }
-
-    }>
-      {children}
-    </DeviceContext.Provider>
-  );
+    return (
+        <DeviceContext.Provider
+            value={{
+                luminaires,
+                setLuminaires,
+                onlineDevices,
+                faultyDevices,
+                offlineDevices,
+            }}
+        >
+            {children}
+        </DeviceContext.Provider>
+    );
 };

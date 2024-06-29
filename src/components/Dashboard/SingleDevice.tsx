@@ -1,30 +1,39 @@
-import React from 'react';
-import DeviceStatus from '../../interfaces/DeviceStatus';
-import { Link } from 'react-router-dom';
-import { deviceIsFaulty, deviceIsOffline, deviceIsOnline } from '../../logic/operational-status.ts';
+import React from "react";
+import { LuminareModel } from "../../interfaces/Luminaire.ts";
+import { Link } from "react-router-dom";
+import { getLuminaireStatus } from "../../logic/operational-status.ts";
 
+type props = {
+    item: LuminareModel;
+};
 
-const SingleDevice: React.FC<DeviceStatus> = (status) => {
-  const bgColors = {
-    "online-devices": "border-green-500",
-    "faulty-devices": "border-red-500",
-    "offline-devices": "border-gray-500",
-  };
+const SingleDevice = ({ item }: props) => {
+    const bgColors = {
+        Online: "bg-green-500",
+        Faulty: "bg-red-500",
+        Offline: "bg-gray-500",
+    };
 
-  return (
-    <Link to={{
-      pathname: `/Device/${status.Address}`,
-    }} className="bg-slate-800 p-4 rounded-lg">
-      <h2 className="text-xl font-bold text-white mb-2">Your device</h2>
-      <p className='text-white'>id: {status.Id}</p>
-      <p className='text-white'>Autonomy: {status.Autonomy}</p>
-      <p className='text-white'>Address: {status.Address}</p>
-      {deviceIsOnline(status) && <p className='text-white bg-green-500 p-1 rounded-lg'>Online</p>}
-      {deviceIsFaulty(status) && <p className='text-white bg-red-500 p-1 rounded-lg'>Faulty</p>}
-      {deviceIsOffline(status) && <p className='text-white bg-gray-500 p-1 rounded-lg'>Offline</p>}
-      {/* Add more content here */}
-    </Link>
-  );
+    const status = getLuminaireStatus(item);
+
+    return (
+        <Link
+            to={{
+                pathname: `/Device/${item.address}`,
+            }}
+            className="bg-slate-800 p-4 rounded-lg"
+            key={item.uid}
+        >
+            <h2 className="text-xl font-bold text-white mb-2">Your device</h2>
+            <p className="text-white">UID: {item.uid}</p>
+            <p className="text-white">Autonomy: {item.autonomy}</p>
+            <p className="text-white">Address: {item.address}</p>
+            <p className={`text-white ${bgColors[status]} p-1 rounded-lg`}>
+                {status}
+            </p>
+            {/* Add more content here */}
+        </Link>
+    );
 };
 
 export default SingleDevice;
