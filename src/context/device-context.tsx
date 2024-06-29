@@ -1,5 +1,5 @@
 import React, { createContext, useState, ReactNode } from "react";
-import { LuminareModel } from "../interfaces/Luminaire.ts";
+import { LuminaireModel, DBLuminaireModel } from "../interfaces/Luminaire.ts";
 import {
     deviceIsFaulty,
     deviceIsOffline,
@@ -7,11 +7,11 @@ import {
 } from "../logic/operational-status.ts";
 
 type DeviceContextType = {
-    luminaires: LuminareModel[];
-    setLuminaires: (devicesStatus: LuminareModel[]) => void;
-    onlineDevices: LuminareModel[];
-    faultyDevices: LuminareModel[];
-    offlineDevices: LuminareModel[];
+    luminaires: DBLuminaireModel[];
+    setLuminaires: (devicesStatus: DBLuminaireModel[]) => void;
+    onlineDevices: LuminaireModel[];
+    faultyDevices: LuminaireModel[];
+    offlineDevices: LuminaireModel[];
 };
 // Create the context
 export const DeviceContext = createContext<DeviceContextType>({
@@ -26,8 +26,8 @@ export const DeviceContext = createContext<DeviceContextType>({
 export const DeviceProvider: React.FC<{ children: ReactNode }> = ({
     children,
 }) => {
-    // Define the state for LuminareModel[]
-    const [luminaires, setLuminaires] = useState<LuminareModel[]>([]);
+    // Define the state for LuminaireModel[]
+    const [luminaires, setLuminaires] = useState<DBLuminaireModel[]>([]);
     const onlineDevices = luminaires.filter((device) => deviceIsOnline(device));
     const faultyDevices = luminaires.filter((device) => deviceIsFaulty(device));
     const offlineDevices = luminaires.filter((device) =>

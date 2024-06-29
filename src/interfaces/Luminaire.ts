@@ -1,5 +1,4 @@
-type LuminareModel = {
-    uid: number;
+type LuminaireModel = {
     address: number;
     maintained: number;
     batteryCharging: number;
@@ -43,4 +42,8 @@ type LuminareModel = {
     updateOn: Date;
 };
 
-export { LuminareModel };
+type DBLuminaireModel = LuminaireModel & {
+    uid: number;
+};
+
+export { DBLuminaireModel, LuminaireModel };

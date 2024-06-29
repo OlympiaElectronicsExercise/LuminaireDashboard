@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import DeviceStatus from "../../interfaces/Luminaire.ts";
+import { LuminaireModel } from "../../interfaces/Luminaire.ts";
 import { Link } from "react-router-dom";
 import { DeviceContext } from "../../context/device-context.tsx";
 import { CounterTypeEnum } from "../../interfaces/Counter";

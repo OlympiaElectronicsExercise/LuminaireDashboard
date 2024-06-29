@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import SingleDevice from "./SingleDevice.tsx";
-import { LuminareModel } from "../../interfaces/Luminaire.ts";
+import {
+    DBLuminaireModel,
+    LuminaireModel,
+} from "../../interfaces/Luminaire.ts";
 import { mockLuminaires } from "../../mock-data/mockLuminaires.ts";
 import { DeviceContext } from "../../context/device-context.tsx";
 import { CounterTypeEnum } from "../../interfaces/Counter.ts";
@@ -9,13 +12,12 @@ import { createLuminaire, getLuminaires } from "../../util/api.ts";
 
 function Dashboard() {
     //useState to contain luminaireModels
-    const [devices, setDevices] = React.useState<LuminareModel[]>([]);
+
     const [loading, setLoading] = React.useState(true);
     const { luminaires, setLuminaires } = React.useContext(DeviceContext);
 
     useEffect(() => {
         // Fetch data from the API, then update the context
-        setLuminaires([]);
         setLoading(false);
     }, []);
 
@@ -26,7 +28,7 @@ function Dashboard() {
         try {
             for (const luminaire of mockLuminaires) {
                 const response = await createLuminaire(luminaire);
-                console.log(`Created luminaire with UID: ${response.UID}`);
+                console.log(`Created luminaire`);
             }
             const response = await getLuminaires();
             console.log("Response:", response);
@@ -35,7 +37,6 @@ function Dashboard() {
                 return;
             }
             setLuminaires(response);
-            setDevices(response);
         } catch (error) {
             console.error("Error:", JSON.stringify(error));
         }
@@ -43,14 +44,13 @@ function Dashboard() {
 
     const getDevices = async () => {
         try {
-            const response: LuminareModel[] = await getLuminaires();
+            const response = await getLuminaires();
             console.log("Response:", response);
             if (response.length === 0) {
                 console.error("No devices found");
                 return;
             }
             setLuminaires(response);
-            setDevices(response);
         } catch (error) {
             console.error("Error:", JSON.stringify(error));
         }
@@ -67,13 +67,15 @@ function Dashboard() {
                 <Counter type={CounterTypeEnum.Faults} />
                 <Counter type={CounterTypeEnum.Offline} />
             </section>
-            <h1 className="text-4xl text-white font-bold">Devices</h1>
+            <h1 className="text-4xl text-white font-bold">
+                <span>{luminaires.length || ""}</span> Devices
+            </h1>
             <section className="grid grid-cols-3 gap-4">
-                {devices.map((item) => (
+                {luminaires.map((item) => (
                     <SingleDevice item={item} key={item.uid} />
                 ))}
             </section>
-            <section>
+            <section className="flex gap-4">
                 {/* a button for populating the api with devices */}
                 <button
                     onClick={getDevices}

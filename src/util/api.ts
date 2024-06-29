@@ -1,47 +1,7 @@
-type LuminareModel = {
-    uid: number;
-    address: number;
-    maintained: number;
-    batteryCharging: number;
-    batteryTestRunning: number;
-    lampTestRunning: number;
-    batteryCapacityFault: number;
-    lampFault: number;
-    chargerFault: number;
-    mainsFault: number;
-    batteryVoltage: string;
-    chargeCurrent: string;
-    lampCurrent: string;
-    autonomy: string;
-    version: string;
-    luminaryModel: string;
-    batteryFault: number;
-    batteryCutOffStatus: number;
-    spiCommError: number;
-    resolvedSpiCommError: number;
-    moduleVersion: string;
-    moduleType: number;
-    timeToSend: string;
-    hasWrongLuminaireType: number;
-    fullyCharged: number;
-    rfchannel: number;
-    lampTestMade: number;
-    dimmingLevel: string;
-    zone: number;
-    sidToGo: number;
-    networkidToGo: number;
-    rfchannelToGo: number;
-    inForcedEmergency: number;
-    rssi: number;
-    rssiWithUnit: string;
-    networkLevel: number;
-    hopCounter: number;
-    messageCounter: number;
-    latencyCounter: number;
-    rc1181fwVersion: string;
-    createdOn: Date;
-    updateOn: Date;
-};
+import { mockLuminaires } from "../mock-data/mockLuminaires";
+import { DBLuminaireModel } from "../interfaces/Luminaire";
+
+type LuminaireModel = (typeof mockLuminaires)[0];
 
 const API_URL = "http://localhost:5100/api/v1";
 
@@ -93,7 +53,7 @@ async function resetPassword(token: string, newPassword: string) {
     return response.json();
 }
 
-async function getLuminaires() {
+async function getLuminaires(): Promise<DBLuminaireModel[]> {
     const response = await fetch(`${API_URL}/Luminaire`, {
         method: "GET",
         headers: {
@@ -103,7 +63,7 @@ async function getLuminaires() {
     return response.json();
 }
 
-async function getLuminaire(uid: number) {
+async function getLuminaire(uid: number): Promise<DBLuminaireModel> {
     const response = await fetch(`${API_URL}/Luminaire/${uid}`, {
         method: "GET",
         headers: {
@@ -113,14 +73,14 @@ async function getLuminaire(uid: number) {
     return response.json();
 }
 
-async function createLuminaire(luminareModel: LuminareModel) {
+async function createLuminaire(LuminaireModel: LuminaireModel) {
     const response = await fetch(`${API_URL}/Luminaire`, {
         method: "POST",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(luminareModel),
+        body: JSON.stringify(LuminaireModel),
     });
     return response.json();
 }
@@ -144,5 +104,5 @@ export {
     getLuminaire,
     createLuminaire,
     deleteLuminaire,
-    LuminareModel,
+    LuminaireModel,
 };
