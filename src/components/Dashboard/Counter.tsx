@@ -28,7 +28,7 @@ const Counter: React.FC<CounterProps> = ({ type }) => {
             to={{
                 pathname: `/list/${type}`,
             }}
-            className={`bg-slate-800 ${bgColors[type]} border p-4 rounded-lg font-mono`}
+            className={`bg-slate-800 hover:bg-slate-800/50 ${bgColors[type]} border p-4 rounded-lg font-mono`}
         >
             <h2 className="text-xl font-bold text-white mb-2">
                 There are{" "}
