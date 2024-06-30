@@ -22,6 +22,12 @@ const SingleDevice = ({ item }: props) => {
         Offline: "bg-gray-500",
     };
 
+    const shadow = {
+        Online: "hover:shadow-green-800/50",
+        Faulty: "hover:shadow-red-800/50",
+        Offline: "hover:shadow-gray-800/50",
+    };
+
     const status = getLuminaireStatus(item);
 
     return (
@@ -29,7 +35,7 @@ const SingleDevice = ({ item }: props) => {
             to={{
                 pathname: `/device/${item.uid}`,
             }}
-            className="bg-slate-800 p-4 rounded-lg"
+            className={`bg-slate-800 p-4 rounded-lg m-2 w-80 cursor-pointer shadow-md hover:shadow-lg ${shadow[status]} transition-shadow duration-200`}
             key={item.uid}
         >
             <div className="flex row justify-between items-center">
@@ -70,7 +76,7 @@ const SingleDevice = ({ item }: props) => {
                 </span>
             </p>
             <p
-                className={`text-white ${bgColors[status]} p-1 rounded-lg font-mono`}
+                className={`text-white ${bgColors[status]} p-1 rounded-lg font-bold text-center font-mono`}
             >
                 {status}
             </p>
