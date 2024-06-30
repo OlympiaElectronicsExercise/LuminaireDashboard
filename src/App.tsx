@@ -16,6 +16,7 @@ import SingleDevicePage from "./components/Device/SingleDevicePage.tsx";
 import ListPage from "./components/ListPage/ListPage.tsx";
 
 import NotFoundPage from "./components/404/NotFoundPage.tsx";
+import Navbar from "./components/Navbar/Navbar.tsx";
 
 function App() {
     function ProtectedRoute ({ isAuth, target }) {
@@ -30,6 +31,7 @@ function App() {
     return (
         <>
             <Router>
+                <Navbar/>
                 <Routes>
                     {/* Routes for initial user interaction */}
                     <Route path="/login" element={<Login />} />
