@@ -30,7 +30,7 @@ function SingleDevicePage() {
             <Link
                 to="/dashboard"
                 className={
-                    "absolute top-5 left-5 bg-slate-700 p-4 rounded-lg flex items-center justify-between gap-3 hover:bg-slate-800 cursor-pointer "
+                    "absolute top-20 left-5 bg-slate-700 p-4 rounded-lg flex items-center justify-between gap-3 hover:bg-slate-800 cursor-pointer "
                 }
             >
                 <svg

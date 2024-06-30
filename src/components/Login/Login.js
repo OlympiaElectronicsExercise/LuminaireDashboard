@@ -2,14 +2,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import { useAuth } from "../../context/auth-context.tsx";
 
 function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("example@example.com");
+    const [password, setPassword] = useState("Aa123456!");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
 
     const NAVIGATE = useNavigate();
+
+    const authFuncs = useAuth();
 
     const onButtonClick = () => {
         // Set initial error values to empty
@@ -55,8 +58,9 @@ function Login() {
             })
             .then(function (r) {
                 if (r.token) {
-                    sessionStorage.setItem('token', JSON.stringify(r.token));
-                    sessionStorage.setItem('email',email);
+                    sessionStorage.setItem("token", JSON.stringify(r.token));
+                    sessionStorage.setItem("email", email);
+                    authFuncs.login();
                     NAVIGATE("/Dashboard");
                 } else {
                     window.alert("Wrong email or password");

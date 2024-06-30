@@ -55,7 +55,38 @@ function SingleDevicePage() {
 
     if (!luminairesState.length) {
         return (
-            <div className="h-screen flex items-center justify-center bg-slate-900">
+            <div className="h-screen flex items-center justify-center text-white bg-slate-900">
+                <Link
+                    to="/dashboard"
+                    className={
+                        "absolute top-20 left-5 bg-slate-700 p-4 rounded-lg flex items-center justify-between gap-3 hover:bg-slate-800 cursor-pointer "
+                    }
+                >
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="transform rotate-180"
+                    >
+                        <path
+                            d="M5 12H19"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                        <path
+                            d="M12 5L19 12L12 19"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                    </svg>
+                    <p className="font-bold font-mono">Go To Dashboard</p>
+                </Link>
                 <h1 className="text-white text-2xl">Devices not found</h1>
             </div>
         );
@@ -69,7 +100,7 @@ function SingleDevicePage() {
             <Link
                 to="/dashboard"
                 className={
-                    "absolute top-5 left-5 bg-slate-700 p-4 rounded-lg flex items-center justify-between gap-3 hover:bg-slate-800 cursor-pointer "
+                    "absolute top-20 left-5 bg-slate-700 p-4 rounded-lg flex items-center justify-between gap-3 hover:bg-slate-800 cursor-pointer "
                 }
             >
                 <svg
