@@ -41,7 +41,7 @@ function Login() {
             password: password,
         };
 
-        fetch("http://localhost:5100/api/v1/Auth/login", {
+        fetch("https://localhost:7252/api/v1/Auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
