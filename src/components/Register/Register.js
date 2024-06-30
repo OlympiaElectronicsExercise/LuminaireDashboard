@@ -52,7 +52,7 @@ function Register() {
             password: password1,
         };
 
-        fetch("https://localhost:7252/api/v1/Auth/register", {
+        fetch("http://localhost:5100/api/v1/Auth/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
