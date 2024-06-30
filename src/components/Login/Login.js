@@ -56,7 +56,7 @@ function Login() {
             .then(function (r) {
                 if (r.token) {
                     sessionStorage.setItem('token', JSON.stringify(r.token));
-
+                    sessionStorage.setItem('email',email);
                     NAVIGATE("/Dashboard");
                 } else {
                     window.alert("Wrong email or password");
