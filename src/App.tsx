@@ -14,6 +14,8 @@ import React from "react";
 import SingleDevicePage from "./components/Device/SingleDevicePage.tsx";
 import ListPage from "./components/ListPage/ListPage.tsx";
 
+import NotFoundPage from "./components/404/NotFoundPage.tsx";
+
 function App() {
     return (
         <>
@@ -35,6 +37,9 @@ function App() {
                     <Route path="/list/:type" element={<ListPage />} />
                     {/* Index Routing */}
                     <Route index element={<Login />} />
+
+                    {/* Detection of 404 */}
+                    <Route path="*" element={<NotFoundPage/>} />
                 </Routes>
             </Router>
         </>
