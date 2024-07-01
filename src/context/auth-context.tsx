@@ -1,22 +1,33 @@
-import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
+import React, {
+    createContext,
+    useState,
+    useEffect,
+    useContext,
+    ReactNode,
+} from "react";
 
 type AuthContextType = {
     isLoggedIn: boolean;
     login: (email: string) => void;
     logout: () => void;
+    email: string;
 };
 
 const AuthContext = createContext<AuthContextType>({
     isLoggedIn: false,
     login: () => {},
     logout: () => {},
+    email: "",
 });
 
-export const AuthProvider: React.FC<{ children: ReactNode }> = ({children}) => {
+export const AuthProvider: React.FC<{ children: ReactNode }> = ({
+    children,
+}) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [email, setEmail] = useState("");
 
     useEffect(() => {
-        const storedEmail = sessionStorage.getItem('email');
+        const storedEmail = sessionStorage.getItem("email");
         console.log(storedEmail);
         if (storedEmail) {
             setIsLoggedIn(true);
@@ -26,18 +37,20 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     }, []);
 
     const login = (email: string) => {
-        sessionStorage.setItem('email', email);
+        sessionStorage.setItem("email", email);
         setIsLoggedIn(true);
+        setEmail(email);
     };
 
     const logout = () => {
-        sessionStorage.removeItem('email');
+        sessionStorage.removeItem("email");
         setIsLoggedIn(false);
-        window.location.href = '/login'; // Redirect to login page
+        setEmail("");
+        window.location.href = "/login"; // Redirect to login page
     };
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+        <AuthContext.Provider value={{ isLoggedIn, email, login, logout }}>
             {children}
         </AuthContext.Provider>
     );

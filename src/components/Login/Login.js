@@ -5,8 +5,8 @@ import "./Login.css";
 import { useAuth } from "../../context/auth-context.tsx";
 
 function Login() {
-    const [email, setEmail] = useState("example@example.com");
-    const [password, setPassword] = useState("Aa123456!");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
 
@@ -60,7 +60,7 @@ function Login() {
                 if (r.token) {
                     sessionStorage.setItem("token", JSON.stringify(r.token));
                     sessionStorage.setItem("email", email);
-                    authFuncs.login();
+                    authFuncs.login(email);
                     NAVIGATE("/Dashboard");
                 } else {
                     window.alert("Wrong email or password");
